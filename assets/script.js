@@ -13,7 +13,26 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for 
 // that city
+
+//Storing cities in local storage
+
+var cityList = [];
+
 var apiKey = "884b48a666f77e7182db403200d6c4bc"
+
+function storeCities() {
+    localStorage.setItem("cities", JSON.stringify(cityList));
+    for (var i = 0; i < localStorage.length; i++){
+        // do something with localStorage.getItem(localStorage.key(i));
+    }
+}
+function createCityList() {
+    $("#search").empty();
+    cityList.forEach(function(city)
+     {$('#history').prepend($('#history'));})
+}
+
+var storedCities = JSON.parse(localStorage.getItem("cities"));
 
 var search = function () {
     var cityName = document.querySelector('#userInput').value
@@ -37,20 +56,26 @@ var search = function () {
                     var windspeed = document.querySelector("#wind")
                     windspeed.textContent = "Wind Speed " + response.wind.speed + " MPH"
                     var icon = document.querySelector("#icon")
-                    icon.textContent = response.weather[3]
-                    
+                    icon.textContent = response.weather[1].icon
+
+
+                })
+            fetch("https://api.openweathermap.org/data/2.5/forecast?lat=" + response[0].lat + "&lon=" + response[0].lon + "&units=imperial&appid=" + apiKey) // future forcast here
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (response) {
                     var futureicon = document.querySelector('#futureIcon')
-                    futureicon.textContent = response.weather[3] // need future
+                    futureicon.textContent = response.weather[2] // need future
                     var futureHumidity = document.querySelector('#futureHumidity')
                     futureHumidity.textContent = "Humidity " + response.main.humidity + " %" // need future
                     var futureWind = document.querySelector('#futureWind')
                     futureWind.textContent = "Wind Speed " + response.wind.speed + " MPH" // Need future
                     var futureTemp = document.querySelector('#futureTemp')
-                    futureTemp.textContent = "Temperature " + response.main.temp + "\u00B0" 
+                    futureTemp.textContent = "Temperature " + response.main.temp + "\u00B0"
                     var history = document.querySelector('#history')
-                    history.textContent = 
+                    // history.textContent = 
                 })
-                fetch("") // future forcast here
         });
 
 }
