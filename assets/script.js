@@ -39,6 +39,7 @@ var search = function () {
                     var icon = document.querySelector("#icon")
                     icon.textContent = response.weather[3]
                     
+                    
                     var future = document.querySelector('#futureForcast')
                     var history = document.querySelector('#history')
                 })
