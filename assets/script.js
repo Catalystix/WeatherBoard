@@ -31,7 +31,7 @@ var search = function () {
                 .then(function (response) {
                     console.log(response)
                     var temp = document.querySelector('#temp')
-                    temp.textContent = "temperature " + response.main.temp + "\u00B0"
+                    temp.textContent = "Temperature " + response.main.temp + "\u00B0"
                     var humidity = document.querySelector('#humidity')
                     humidity.textContent = "Humidity " + response.main.humidity + " %"
                     var windspeed = document.querySelector("#wind")
@@ -39,14 +39,20 @@ var search = function () {
                     var icon = document.querySelector("#icon")
                     icon.textContent = response.weather[3]
                     
-                    
-                    
-                    var future = document.querySelector('#futureForcast')
+                    var futureicon = document.querySelector('#futureIcon')
+                    futureicon.textContent = response.weather[3] // need future
+                    var futureHumidity = document.querySelector('#futureHumidity')
+                    futureHumidity.textContent = "Humidity " + response.main.humidity + " %" // need future
+                    var futureWind = document.querySelector('#futureWind')
+                    futureWind.textContent = "Wind Speed " + response.wind.speed + " MPH" // Need future
+                    var futureTemp = document.querySelector('#futureTemp')
+                    futureTemp.textContent = "Temperature " + response.main.temp + "\u00B0" 
                     var history = document.querySelector('#history')
+                    history.textContent = 
                 })
                 fetch("") // future forcast here
         });
 
 }
 
-document.querySelector('#search').addEventListener('click, keydown', search)
+document.querySelector('#search').addEventListener('click', search)
