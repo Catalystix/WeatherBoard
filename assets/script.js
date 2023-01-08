@@ -40,6 +40,7 @@ var search = function () {
                     icon.textContent = response.weather[3]
                     
                     
+                    
                     var future = document.querySelector('#futureForcast')
                     var history = document.querySelector('#history')
                 })
