@@ -20,21 +20,43 @@ var cityList = [];
 
 var apiKey = "884b48a666f77e7182db403200d6c4bc"
 
-function storeCities() {
-    var input = document.getElementById("#userInput");
-localStorage.setItem("cities", input.val());
-    localStorage.setItem("cities", JSON.stringify(cityList));
-    for (var i = 0; i < localStorage.length; i++){
-        // do something with localStorage.getItem(localStorage.key(i));
+// function storeCities() {
+//     var input = document.getElementById("#userInput");
+// localStorage.setItem("cities", input.val());
+//     localStorage.setItem("cities", JSON.stringify(cityList));
+//     for (var i = 0; i < localStorage.length; i++){
+//         // do something with localStorage.getItem(localStorage.key(i));
+//     }
+// }
+// function createCityList() {
+//     $("#userInput").empty();
+//     cityList.forEach(function(city)
+//      {$('#history').prepend($('#history'));})
+// }
+
+// var storedCities = JSON.parse(localStorage.getItem("cities"));
+
+const storedCities = document.querySelector("#userInput");
+const forget = document.querySelector("#forget");
+
+
+userInput.addEventListener('#search', function(e) {
+    e.preventDefault();
+});
+
+userInput.addEventListener('click', function() {
+    localStorage.setItem('userInput', storedCities.value);
+    displayCities();
+});
+
+function displayCities() {
+    var storedCities = JSON.parse(localStorage.getItem(''));
+    for (var i = 0; i < storedCities.length; i++)
+    if (storedCities !== null) {
+        var showCities = document.createElement('p');
+        displayCities.append(showCities)
     }
 }
-function createCityList() {
-    $("#userInput").empty();
-    cityList.forEach(function(city)
-     {$('#history').prepend($('#history'));})
-}
-
-var storedCities = JSON.parse(localStorage.getItem("cities"));
 
 var search = function () {
     var cityName = document.querySelector('#userInput').value

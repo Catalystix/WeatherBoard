@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeatherBoard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
+
 <body>
     <header>WeatherBoard</header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
                 <div class="col-md-9">
-    <div class="input-group m-3 pr-3">
-        <input id="userInput" class="form-control" type="text" placeholder="Search for a City">
-        <button id="search">Search</button>
-        <ul id="history">
-        </ul>
+                    <div class="input-group m-3 pr-3">
+                        <input id="userInput" type="text" placeholder="Search for a City">
+                        <button id="search">Search</button>
+                        <div id="history"></div>
+                        <button id="forget">Clear History</button>
+                    </div>
+
+
+                    <div id="currentCity" class="col-md-9">Current weather</div>
+                    <div id="icon">Icon</div>
+                    <div id="temp">Temp</div>
+                    <div id="humidity">Humidity</div>
+                    <div id="wind">Wind</div>
+                    <div class="row">
+                        <div id="futureForcast" class="card">5 Day Forcast</div>
+                        <div id="futureIcon" class="card">Icon</div>
+                        <div id="futureTemp" class="card">Temp</div>
+                        <div id="futureHumidity" class="card">Humidity</div>
+                        <div id="futureWind" class="card">Wind</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <div id="currentCity" class="col-md-9">Current weather</div>
-    <div id="icon">Icon</div>
-    <div id="temp">Temp</div>
-    <div id="humidity">Humidity</div>
-    <div id="wind">Wind</div>
-<div class="row">
-    <div id="futureForcast" class="card">5 Day Forcast</div>
-    <div id="futureIcon" class="card">Icon</div>
-    <div id="futureTemp" class="card">Temp</div>
-    <div id="futureHumidity" class="card">Humidity</div>
-    <div id="futureWind" class="card">Wind</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
+
 </html>
