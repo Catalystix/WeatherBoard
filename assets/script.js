@@ -21,13 +21,15 @@ var cityList = [];
 var apiKey = "884b48a666f77e7182db403200d6c4bc"
 
 function storeCities() {
+    var input = document.getElementById("#userInput");
+localStorage.setItem("cities", input.val());
     localStorage.setItem("cities", JSON.stringify(cityList));
     for (var i = 0; i < localStorage.length; i++){
         // do something with localStorage.getItem(localStorage.key(i));
     }
 }
 function createCityList() {
-    $("#search").empty();
+    $("#userInput").empty();
     cityList.forEach(function(city)
      {$('#history').prepend($('#history'));})
 }
@@ -66,7 +68,7 @@ var search = function () {
                 })
                 .then(function (response) {
                     var futureicon = document.querySelector('#futureIcon')
-                    futureicon.textContent = response.weather[2] // need future
+                    futureicon.textContent = response.weather[3] // need future
                     var futureHumidity = document.querySelector('#futureHumidity')
                     futureHumidity.textContent = "Humidity " + response.main.humidity + " %" // need future
                     var futureWind = document.querySelector('#futureWind')
