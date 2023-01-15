@@ -16,7 +16,7 @@
 
 //Storing cities in local storage
 
-var cityList = [];
+var cityList = JSON.parse(localStorage.getItem('userInput')) || [];
 
 var apiKey = "884b48a666f77e7182db403200d6c4bc"
 
@@ -47,7 +47,8 @@ userInput.addEventListener('#search', function(e) { // switch user input for sea
 });
 // clicking on the user input saves, i cant get to save more then 1 at a time and display them appended.
 searchBtn.addEventListener('click', function() {
-    localStorage.setItem('userInput', storedCities.value);
+    cityList.push(storedCities.value);
+    localStorage.setItem('userInput', JSON.stringify(cityList));
     displayCities();
 });
 
@@ -58,13 +59,13 @@ function displayCities() {
     //     var showCities = document.createElement('p');
     //     displayCities.append(showCities)
     var display = document.querySelector('#history');
-    var cities = JSON.parse(localStorage.getItem('storedCities'))
+
     display.innerHTML = '';
  
-    for (var i = 0; i < storedCities.length; i++) {
+    for (var i = 0; i < cityList.length; i++) {
      var displayCities = document.createElement('p');
-     displayCities.textContent = cities[i];
-     display.append(cities);
+     displayCities.textContent = cityList[i];
+     display.append(displayCities);
     }
 }
 
@@ -99,21 +100,26 @@ var search = function () {
                     return response.json();
                 })
                 .then(function (response) {
-                    var futureIcon = document.querySelector('#futureIcon')
+                    for (var i = 1; i <= 5; i ++) {
+                        var h = (i - 1) * 8;
+                        var futureIcon = document.querySelector('#futureIcon' + i)
                     console.log("103", response)
-                    futureIcon.src = "https://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png" // need future
-                    var futureHumidity = document.querySelector('#futureHumidity')
-                    futureHumidity.textContent = "Humidity " + response.list[0].main.humidity + " %" // need future
-                    var futureWind = document.querySelector('#futureWind')
-                    futureWind.textContent = "Wind Speed " + response.list[0].wind.speed + " MPH" // Need future
-                    var futureTemp = document.querySelector('#futureTemp')
-                    futureTemp.textContent = "Temperature " + response.list[0].main.temp + "\u00B0"
+                    futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
+                    var futureHumidity = document.querySelector('#futureHumidity' + i)
+                    futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
+                    var futureWind = document.querySelector('#futureWind' + i)
+                    futureWind.textContent = "Wind Speed " + response.list[h].wind.speed + " MPH" // Need future
+                    var futureTemp = document.querySelector('#futureTemp' + i)
+                    futureTemp.textContent = "Temperature " + response.list[h].main.temp + "\u00B0"
                     var history = document.querySelector('#history')
-                    // history.textContent = 
+
+
+                    }
                 })
+
         });
         
-        //5day not working
+        
 
 }
 
