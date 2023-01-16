@@ -62,6 +62,8 @@ function displayCities() {
     //     displayCities.append(showCities)
     var display = document.querySelector('#history');
     
+
+    //cannot figure out how to get appended text to be clickable
         
 
     display.innerHTML = '';
