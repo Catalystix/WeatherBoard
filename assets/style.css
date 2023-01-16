@@ -14,7 +14,7 @@ body {
 }
 
 .card {
-    
+    padding: 10px;
     background-color: rgba(0,0,0,0)!important;
     border: none;
 
@@ -22,4 +22,7 @@ body {
 img {
     width: 100px;
     height: 100px;
+}
+.row {
+    border: aqua;
 }

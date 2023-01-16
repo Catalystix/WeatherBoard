@@ -55,11 +55,11 @@ searchBtn.addEventListener('click', function() {
 });
 
 function displayCities() {
-    var storedCities = JSON.parse(localStorage.getItem(''));
-    for (var i = 0; i < storedCities.length; i++)
-    if (storedCities !== null) {
-        var showCities = document.createElement('p');
-        displayCities.append(showCities)
+    // var storedCities = JSON.parse(localStorage.getItem(''));
+    // for (var i = 0; i < storedCities.length; i++)
+    // if (storedCities !== null) {
+    //     var showCities = document.createElement('p');
+    //     displayCities.append(showCities)
     var display = document.querySelector('#history');
     
         
@@ -72,11 +72,9 @@ function displayCities() {
      display.append(displayCities);
     }
 }
-}
 forget.addEventListener('#forget', function(e){
     e.preventDefault();
 });
-
 
 forget.addEventListener('click', function() {
   localStorage.removeItem('userInput')
