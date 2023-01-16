@@ -26,3 +26,9 @@ There are a lot of moving parts here between using functions multiple times and 
  * W3 Schools for some .js methods and functions
  * W3 Schools for README.MD Directions
  * My tutor!
+
+ https://github.com/Catalystix/WeatherBoard
+
+ https://catalystix.github.io/WeatherBoard/
+
+ ![Alt text](./assets/Weatherboard%20challenge%206.jpg)
