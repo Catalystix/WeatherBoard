@@ -68,6 +68,16 @@ function displayCities() {
      display.append(displayCities);
     }
 }
+forget.addEventListener('#forget', function(e){
+    e.preventDefault();
+});
+
+
+forget.addEventListener('click', function() {
+  localStorage.removeItem('userInput')
+  var display = document.querySelector('#history');
+    display.innerHTML = "";
+});
 
 var search = function () {
     var cityName = document.querySelector('#userInput').value
@@ -104,6 +114,8 @@ var search = function () {
                         var h = (i - 1) * 8;
                         var futureIcon = document.querySelector('#futureIcon' + i)
                     console.log("103", response)
+                    var futureForcast = document.querySelector('#futureForcast' + i)
+                    futureForcast = response.list[h].dt_txt
                     futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
                     var futureHumidity = document.querySelector('#futureHumidity' + i)
                     futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
@@ -111,6 +123,7 @@ var search = function () {
                     futureWind.textContent = "Wind Speed " + response.list[h].wind.speed + " MPH" // Need future
                     var futureTemp = document.querySelector('#futureTemp' + i)
                     futureTemp.textContent = "Temperature " + response.list[h].main.temp + "\u00B0"
+                    
                     var history = document.querySelector('#history')
 
 

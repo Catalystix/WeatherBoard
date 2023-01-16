@@ -8,3 +8,11 @@ header {
 body {
     background: linear-gradient(to right, #f8ff70, #01252e);
 }
+#icon {
+    width: 100px;
+    height: 100px;
+}
+
+.card {
+    width: 50%;
+}
