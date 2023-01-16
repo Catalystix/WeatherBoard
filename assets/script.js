@@ -79,6 +79,7 @@ forget.addEventListener('click', function() {
     display.innerHTML = "";
 });
 
+
 var search = function () {
     var cityName = document.querySelector('#userInput').value
     console.log(cityName)
@@ -93,6 +94,7 @@ var search = function () {
                     return response.json();
                 })
                 .then(function (response) {
+                    
                     console.log(response)
                     var temp = document.querySelector('#temp')
                     temp.textContent = "Temperature " + response.main.temp + "\u00B0"
@@ -115,7 +117,25 @@ var search = function () {
                         var futureIcon = document.querySelector('#futureIcon' + i)
                     console.log("103", response)
                     var futureForcast = document.querySelector('#futureForcast' + i)
-                    futureForcast = response.list[h].dt_txt
+
+                    const a = dayjs()
+                    const b = a.add(1, 'd')
+                    const c = b.add(1, 'd')
+                    const d = c.add(1, 'd')
+                    const e = d.add(1, 'd')
+                    const f = e.add(1, 'd')
+                    var dateDisplay1 = document.querySelector('#futureForcast1')
+                    var dateDisplay2 = document.querySelector('#futureForcast2')
+                    var dateDisplay3 = document.querySelector('#futureForcast3')
+                    var dateDisplay4 = document.querySelector('#futureForcast4')
+                    var dateDisplay5 = document.querySelector('#futureForcast5')
+
+
+                    dateDisplay1.innerHTML = b
+                    dateDisplay2.innerHTML = c
+                    dateDisplay3.innerHTML = d
+                    dateDisplay4.innerHTML = e
+                    dateDisplay5.innerHTML = f
                     futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
                     var futureHumidity = document.querySelector('#futureHumidity' + i)
                     futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
@@ -125,15 +145,14 @@ var search = function () {
                     futureTemp.textContent = "Temperature " + response.list[h].main.temp + "\u00B0"
                     
                     var history = document.querySelector('#history')
-
-
                     }
                 })
-
+              
         });
         
         
 
 }
+
 
 document.querySelector('#search').addEventListener('click', search)
