@@ -18,6 +18,8 @@
 
 var cityList = JSON.parse(localStorage.getItem('userInput')) || [];
 
+
+
 var apiKey = "884b48a666f77e7182db403200d6c4bc"
 
 // function storeCities() {
@@ -53,12 +55,14 @@ searchBtn.addEventListener('click', function() {
 });
 
 function displayCities() {
-    // var storedCities = JSON.parse(localStorage.getItem(''));
-    // for (var i = 0; i < storedCities.length; i++)
-    // if (storedCities !== null) {
-    //     var showCities = document.createElement('p');
-    //     displayCities.append(showCities)
+    var storedCities = JSON.parse(localStorage.getItem(''));
+    for (var i = 0; i < storedCities.length; i++)
+    if (storedCities !== null) {
+        var showCities = document.createElement('p');
+        displayCities.append(showCities)
     var display = document.querySelector('#history');
+    
+        
 
     display.innerHTML = '';
  
@@ -67,6 +71,7 @@ function displayCities() {
      displayCities.textContent = cityList[i];
      display.append(displayCities);
     }
+}
 }
 forget.addEventListener('#forget', function(e){
     e.preventDefault();
@@ -136,6 +141,7 @@ var search = function () {
                     dateDisplay3.innerHTML = d
                     dateDisplay4.innerHTML = e
                     dateDisplay5.innerHTML = f
+
                     futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
                     var futureHumidity = document.querySelector('#futureHumidity' + i)
                     futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
