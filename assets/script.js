@@ -44,11 +44,11 @@ const storedCities = document.querySelector("#userInput");
 const forget = document.querySelector("#forget");
 const searchBtn = document.querySelector('#search')
 
-userInput.addEventListener('#search', function(e) { // switch user input for search?
+userInput.addEventListener('#search', function (e) { // switch user input for search?
     e.preventDefault();
 });
 // clicking on the user input saves, i cant get to save more then 1 at a time and display them appended.
-searchBtn.addEventListener('click', function() {
+searchBtn.addEventListener('click', function () {
     cityList.push(storedCities.value);
     localStorage.setItem('userInput', JSON.stringify(cityList));
     displayCities();
@@ -61,26 +61,26 @@ function displayCities() {
     //     var showCities = document.createElement('p');
     //     displayCities.append(showCities)
     var display = document.querySelector('#history');
-    
+
 
     //cannot figure out how to get appended text to be clickable
-        
+
 
     display.innerHTML = '';
- 
+
     for (var i = 0; i < cityList.length; i++) {
-     var displayCities = document.createElement('p');
-     displayCities.textContent = cityList[i];
-     display.append(displayCities);
+        var displayCities = document.createElement('p');
+        displayCities.textContent = cityList[i];
+        display.append(displayCities);
     }
 }
-forget.addEventListener('#forget', function(e){
+forget.addEventListener('#forget', function (e) {
     e.preventDefault();
 });
 
-forget.addEventListener('click', function() {
-  localStorage.removeItem('userInput')
-  var display = document.querySelector('#history');
+forget.addEventListener('click', function () {
+    localStorage.removeItem('userInput')
+    var display = document.querySelector('#history');
     display.innerHTML = "";
 });
 
@@ -93,13 +93,13 @@ var search = function () {
             return response.json();
         })
         .then(function (response) {
-               // getting current day forcast
+            // getting current day forcast
             fetch("https://api.openweathermap.org/data/2.5/weather?lat=" + response[0].lat + "&lon=" + response[0].lon + "&units=imperial&appid=" + apiKey)
                 .then(function (response) {
                     return response.json();
                 })
                 .then(function (response) {
-                    
+
                     console.log(response)
                     var temp = document.querySelector('#temp')
                     temp.textContent = "Temperature " + response.main.temp + "\u00B0"
@@ -117,46 +117,46 @@ var search = function () {
                     return response.json();
                 })
                 .then(function (response) {
-                    for (var i = 1; i <= 5; i ++) {
+                    for (var i = 1; i <= 5; i++) {
                         var h = (i - 1) * 8;
                         var futureIcon = document.querySelector('#futureIcon' + i)
-                    console.log("103", response)
-                    var futureForcast = document.querySelector('#futureForcast' + i)
+                        console.log("103", response)
+                        var futureForcast = document.querySelector('#futureForcast' + i)
 
-                    const a = dayjs()
-                    const b = a.add(1, 'd')
-                    const c = b.add(1, 'd')
-                    const d = c.add(1, 'd')
-                    const e = d.add(1, 'd')
-                    const f = e.add(1, 'd')
-                    var dateDisplay1 = document.querySelector('#futureForcast1')
-                    var dateDisplay2 = document.querySelector('#futureForcast2')
-                    var dateDisplay3 = document.querySelector('#futureForcast3')
-                    var dateDisplay4 = document.querySelector('#futureForcast4')
-                    var dateDisplay5 = document.querySelector('#futureForcast5')
+                        const a = dayjs()
+                        const b = a.add(1, 'd')
+                        const c = b.add(1, 'd')
+                        const d = c.add(1, 'd')
+                        const e = d.add(1, 'd')
+                        const f = e.add(1, 'd')
+                        var dateDisplay1 = document.querySelector('#futureForcast1')
+                        var dateDisplay2 = document.querySelector('#futureForcast2')
+                        var dateDisplay3 = document.querySelector('#futureForcast3')
+                        var dateDisplay4 = document.querySelector('#futureForcast4')
+                        var dateDisplay5 = document.querySelector('#futureForcast5')
 
 
-                    dateDisplay1.innerHTML = b
-                    dateDisplay2.innerHTML = c
-                    dateDisplay3.innerHTML = d
-                    dateDisplay4.innerHTML = e
-                    dateDisplay5.innerHTML = f
+                        dateDisplay1.innerHTML = b
+                        dateDisplay2.innerHTML = c
+                        dateDisplay3.innerHTML = d
+                        dateDisplay4.innerHTML = e
+                        dateDisplay5.innerHTML = f
 
-                    futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
-                    var futureHumidity = document.querySelector('#futureHumidity' + i)
-                    futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
-                    var futureWind = document.querySelector('#futureWind' + i)
-                    futureWind.textContent = "Wind Speed " + response.list[h].wind.speed + " MPH" // Need future
-                    var futureTemp = document.querySelector('#futureTemp' + i)
-                    futureTemp.textContent = "Temperature " + response.list[h].main.temp + "\u00B0"
-                    
-                    var history = document.querySelector('#history')
+                        futureIcon.src = "https://openweathermap.org/img/w/" + response.list[h].weather[0].icon + ".png" // need future
+                        var futureHumidity = document.querySelector('#futureHumidity' + i)
+                        futureHumidity.textContent = "Humidity " + response.list[h].main.humidity + " %" // need future
+                        var futureWind = document.querySelector('#futureWind' + i)
+                        futureWind.textContent = "Wind Speed " + response.list[h].wind.speed + " MPH" // Need future
+                        var futureTemp = document.querySelector('#futureTemp' + i)
+                        futureTemp.textContent = "Temperature " + response.list[h].main.temp + "\u00B0"
+
+                        var history = document.querySelector('#history')
                     }
                 })
-              
+
         });
-        
-        
+
+
 
 }
 
